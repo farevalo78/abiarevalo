@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abi Arevalo | Architecture Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:#f6f3ef;
+      color:#1f1f1f;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .navbar{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      background:rgba(255,255,255,0.9);
+      backdrop-filter:blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      z-index:1000;
+      border-bottom:1px solid #e6e1db;
+    }
+
+    .logo{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#333;
+      font-size:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#8b6f47;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8% 80px;
+      background:
+      linear-gradient(rgba(246,243,239,0.8), rgba(246,243,239,0.8)),
+      url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:850px;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:20px;
+      color:#1f1f1f;
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#555;
+      margin-bottom:40px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      padding:15px 40px;
+      background:#1f1f1f;
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      transition:0.3s;
+      letter-spacing:1px;
+    }
+
+    .hero-btn:hover{
+      background:#8b6f47;
+      transform:translateY(-3px);
+    }
+
+    section{
+      padding:110px 8%;
+    }
+
+    .section-title{
+      font-family:'Playfair Display', serif;
+      font-size:48px;
+      margin-bottom:50px;
+      text-align:center;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+      object-fit:cover;
+      box-shadow:0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .about-text h3{
+      font-size:32px;
+      margin-bottom:20px;
+      font-family:'Playfair Display', serif;
+    }
+
+    .about-text p{
+      margin-bottom:20px;
+      color:#555;
+      font-size:17px;
+    }
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .skill-card{
+      background:white;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.06);
+      transition:0.3s;
+    }
+
+    .skill-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .skill-card h4{
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .portfolio-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      background:white;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .portfolio-item img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .portfolio-item:hover img{
+      transform:scale(1.08);
+    }
+
+    .portfolio-content{
+      padding:25px;
+    }
+
+    .portfolio-content h3{
+      margin-bottom:10px;
+      font-size:24px;
+    }
+
+    .portfolio-content p{
+      color:#666;
+      font-size:15px;
+    }
+
+    .resume{
+      background:#1f1f1f;
+      color:white;
+      border-radius:30px;
+      text-align:center;
+    }
+
+    .resume h2{
+      color:white;
+    }
+
+    .resume p{
+      max-width:700px;
+      margin:0 auto 30px;
+      color:#d8d8d8;
+    }
+
+    .resume-btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:white;
+      color:#1f1f1f;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .resume-btn:hover{
+      background:#c7a878;
+      color:white;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      margin-bottom:15px;
+      font-size:18px;
+      color:#555;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#777;
+      font-size:14px;
+    }
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:52px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Abi Arevalo</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Architecture<br>Design Portfolio</h1>
+
+      <p>
+        NYIT Architecture Student passionate about spatial design,
+        creative storytelling, and modern architectural concepts.
+      </p>
+
+      <a href="#portfolio" class="hero-btn">
+        View Portfolio
+      </a>
+    </div>
+  </section>
+
+  <section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Architecture">
+
+      <div class="about-text">
+
+        <h3>Abi Arevalo</h3>
+
+        <p>
+          I am a motivated architecture student at New York Institute
+          of Technology with a strong passion for design, creativity,
+          and spatial problem solving.
+        </p>
+
+        <p>
+          My work combines conceptual thinking with architectural
+          storytelling, exploring forms, environmental enclosures,
+          body mapping, and experiential spaces.
+        </p>
+
+        <p>
+          I am continuously developing my technical and professional
+          skills while creating projects that merge imagination,
+          functionality, and human experience.
+        </p>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section id="portfolio">
+
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="portfolio-content">
+          <h3>Horizon & Sky</h3>
+          <p>
+            Experimental architectural volumes exploring perspective,
+            body movement, and spatial interaction through conceptual design.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="portfolio-content">
+          <h3>Environmental Enclosures</h3>
+          <p>
+            Interior spatial studies focused on environmental calibration,
+            circulation, and immersive architectural experiences.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="portfolio-content">
+          <h3>Materialized Spaces</h3>
+          <p>
+            Isometric architectural representations exploring geometry,
+            transitions, and material interaction within spatial design.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills & Abilities</h2>
+
+    <div class="skills">
+
+      <div class="skill-card">
+        <h4>Architectural Design</h4>
+        <p>Conceptual thinking, spatial design, and creative development.</p>
+      </div>
+
+      <div class="skill-card">
+        <h4>Rhino Modeling</h4>
+        <p>Basic 3D modeling and digital architectural visualization.</p>
+      </div>
+
+      <div class="skill-card">
+        <h4>Team Collaboration</h4>
+        <p>Strong communication and collaborative project development.</p>
+      </div>
+
+      <div class="skill-card">
+        <h4>Creative Problem Solving</h4>
+        <p>Design-focused analytical thinking and adaptability.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="resume" class="resume">
+
+    <h2 class="section-title">Resume & Achievements</h2>
+
+    <p>
+      Freshman Architecture student at NYIT with a 3.06 GPA,
+      recognized for leadership and academic achievement.
+      Nominated to the National Society of Leadership and Success.
+    </p>
+
+    <a href="resume.pdf" class="resume-btn" download>
+      Download Resume
+    </a>
+
+  </section>
+
+  <section id="contact" class="contact">
+
+    <h2 class="section-title">Contact</h2>
+
+    <p>Email: abi.mile170408@gmail.com</p>
+
+    <p>Jericho, New York</p>
+
+    <p>Bilingual — English & Spanish</p>
+
+  </section>
+
+  <footer>
+    © 2026 Abi Arevalo — Architecture Portfolio
+  </footer>
+
+</body>
+</html>
